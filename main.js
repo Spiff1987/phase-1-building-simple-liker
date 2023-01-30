@@ -5,6 +5,33 @@ const FULL_HEART = '♥'
 // Your JavaScript code goes here!
 
 
+const likeGlyph = document.getElementsByClassName('like-glyph')
+
+      const afterClick = function(e){
+      const heart = e.target
+        mimicServerCall("something")
+        .then(function(){
+      if ( heart.innerText === EMPTY_HEART) {
+        heart.innerText = FULL_HEART;
+        heart.classList.add("activated-heart");
+      } else {
+        heart.innerText = EMPTY_HEART;
+        heart.classList.remove("activated-heart");
+      }
+      })
+      .catch(function(error) {
+        const modal = document.getElementById("modal");
+        modal.innerText = error;
+        modal.classList.remove("hidden");
+      setTimeout(() => modal.classList.add("hidden"), 3000);
+      });
+      }
+
+      for (glph of likeGlyph){
+        glph.addEventListener('click', afterClick)
+      }
+
+// And in the HTML, add the .hidden class to the error modal:
 
 
 //------------------------------------------------------------------------------
